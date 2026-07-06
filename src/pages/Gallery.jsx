@@ -270,10 +270,10 @@ export default function Gallery() {
         border: '1px dashed rgba(255,107,53,.2)', borderRadius: '12px',
         maxWidth: '1320px', display: 'flex', alignItems: 'center', gap: '1rem'
       }}>
-        <span style={{ fontSize: '1.2rem' }}>📸</span>
+        {/* <span style={{ fontSize: '1.2rem' }}>📸</span>
         <span style={{ fontFamily: 'monospace', fontSize: '.72rem', color: 'var(--muted)', letterSpacing: '.1em' }}>
           Replace the images in <code style={{ color: 'var(--amber)', background: 'rgba(255,107,53,.08)', padding: '2px 6px', borderRadius: '4px' }}>src/assets/</code> with your actual winning photos, then update captions in <code style={{ color: 'var(--amber)', background: 'rgba(255,107,53,.08)', padding: '2px 6px', borderRadius: '4px' }}>Gallery.jsx</code>
-        </span>
+        </span> */}
       </div>
 
       {/* Lightbox */}
