@@ -10,20 +10,21 @@ const asset = file => new URL(`../assets/${file}`, import.meta.url).href
 // Replace caption / category as you add your own winning pics.
 // Images are pulled from your existing uploaded assets.
 const PHOTOS = [
-  { src: asset('12.jpg'),  caption: 'Hack-Tech — 3rd Position 🏆',     cat: 'Hackathon' },
-  { src: asset('13.jpg'),  caption: 'GDG Hackureka — Finalist 🎯',      cat: 'Hackathon' },
-  { src: asset('15.webp'), caption: 'HackVision Vault — Top 15 ⚡',     cat: 'Hackathon' },
-  { src: asset('9.jpeg'),  caption: 'National Youth Festival — Coordinator 🎓', cat: 'Event' },
-  { src: asset('10.png'),  caption: 'Internship at Celebal Technologies', cat: 'Work'    },
-  { src: asset('16.jpeg'), caption: 'Web Dev Internship — Nmold',        cat: 'Work'    },
-  { src: asset('1.png'),   caption: 'Campus Technical Fest',             cat: 'Event'   },
-  { src: asset('3.png'),   caption: 'Project Exhibition',                cat: 'Event'   },
-  { src: asset('4.webp'),  caption: 'Workshop & Seminar',                cat: 'Event'   },
-  { src: asset('5.png'),   caption: 'Coding Competition',                cat: 'Event'   },
-  { src: asset('6.png'),   caption: 'Team Collaboration',                cat: 'Event'   },
-  { src: asset('7.png'),   caption: 'Award Ceremony',                    cat: 'Event'   },
-  { src: asset('8.png'),   caption: 'Tech Conference',                   cat: 'Event'   },
-  { src: asset('11.png'),  caption: 'Recognition & Excellence',          cat: 'Award'   },
+  { src: asset('10.jpeg'),  caption: 'SIH', cat: 'Hackathon'    },
+  { src: asset('9.jpeg'), caption: 'SIH',        cat: 'Hackathon'    },
+  { src: asset('1.jpeg'),   caption: 'AIU Youth Fest',             cat: 'Event'   },
+  { src: asset('2.jpeg'),   caption: 'AIU Youth Fest',                cat: 'Event'   },
+  { src: asset('3.jpeg'),  caption: 'Hack-Tech — 3rd Position 🏆',                cat: 'Hackathon'   },
+  { src: asset('4.jpeg'),   caption: 'Hack-Tech — 3rd Position 🏆',                cat: 'Hackathon'   },
+  { src: asset('5.jpeg'),   caption: 'Hackureka - Top 7 teams',                cat: 'Hackathon'   },
+  { src: asset('6.jpeg'),   caption: 'Hackureka - Top 7 teams',                    cat: 'Hackathon'   },
+  { src: asset('7.jpeg'),   caption: 'Tech Conference',                   cat: 'Event'   },
+  { src: asset('8.jpeg'),  caption: 'Recognition & Excellence',          cat: 'Award'   },
+  { src: asset('11.jpeg'),   caption: 'Leetcode Badges',                   cat: 'Award'   },
+  { src: asset('12.jpeg'),  caption: 'Leetcode Badges',          cat: 'Award'   },
+  { src: asset('13.jpeg'),  caption: 'Training',          cat: 'Upskilling'   },
+  { src: asset('14.jpeg'),  caption: 'Training',          cat: 'Upskilling'   },
+  { src: asset('15.jpeg'),  caption: 'Training',          cat: 'Upskilling'   },
 ]
 
 const CATS = ['All', 'Hackathon', 'Award', 'Work', 'Event']
@@ -100,11 +101,8 @@ const GalleryItem = ({ photo, idx, onClick }) => {
 
 // ── Lightbox ──────────────────────────────────────────────────────────────
 const Lightbox = ({ photo, all, onClose, onPrev, onNext }) => {
-  if (!photo) return null
-  const idx = all.indexOf(photo)
-
-  // keyboard
   React.useEffect(() => {
+    if (!photo) return undefined
     const fn = e => {
       if (e.key === 'Escape') onClose()
       if (e.key === 'ArrowRight') onNext()
@@ -112,7 +110,10 @@ const Lightbox = ({ photo, all, onClose, onPrev, onNext }) => {
     }
     window.addEventListener('keydown', fn)
     return () => window.removeEventListener('keydown', fn)
-  }, [photo])
+  }, [photo, onClose, onNext, onPrev])
+
+  if (!photo) return null
+  const idx = all.indexOf(photo)
 
   return (
     <div onClick={onClose} style={{

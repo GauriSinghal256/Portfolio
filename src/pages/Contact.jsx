@@ -2,11 +2,39 @@ import React, { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 
-const socials=[
-  {l:'Email',v:'singhalg818@gmail.com',h:'mailto:singhalg818@gmail.com',sym:'✉',col:'var(--amber)'},
-  {l:'LinkedIn',v:'gaurisinghal28',h:'https://www.linkedin.com/in/gaurisinghal28',sym:'in',col:'var(--rose)'},
-  {l:'GitHub',v:'GauriSinghal256',h:'https://github.com/GauriSinghal256',col:'var(--amber)'},
-  {l:'Phone',v:'+91 7017255646',h:'tel:+917017255646',sym:'◎',col:'var(--rose)'},
+import { MdEmail } from 'react-icons/md'
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
+import { IoCall } from 'react-icons/io5'
+
+const socials = [
+  {
+    l: 'Email',
+    v: 'singhalg818@gmail.com',
+    h: 'mailto:singhalg818@gmail.com',
+    sym: <MdEmail />,
+    col: 'var(--amber)'
+  },
+  {
+    l: 'LinkedIn',
+    v: 'gaurisinghal28',
+    h: 'https://www.linkedin.com/in/gaurisinghal28',
+    sym: <FaLinkedinIn />,
+    col: 'var(--rose)'
+  },
+  {
+    l: 'GitHub',
+    v: 'GauriSinghal256',
+    h: 'https://github.com/GauriSinghal256',
+    sym: <FaGithub />,
+    col: 'var(--amber)'
+  },
+  {
+    l: 'Phone',
+    v: '+91 7017255646',
+    h: 'tel:+917017255646',
+    sym: <IoCall />,
+    col: 'var(--rose)'
+  }
 ]
 
 export default function Contact() {
@@ -104,8 +132,22 @@ export default function Contact() {
                 e.currentTarget.style.transform='none'
                 e.currentTarget.style.boxShadow='none'
               }}>
-              <div style={{fontSize:'1.4rem',marginBottom:'.8rem',color:s.col,
-                fontFamily:'monospace',fontWeight:700}}>{s.sym}</div>
+              <div
+  style={{
+    width: '46px',
+    height: '46px',
+    borderRadius: '12px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: 'rgba(255,255,255,.04)',
+    color: s.col,
+    fontSize: '1.45rem',
+    marginBottom: '.9rem'
+  }}
+>
+  {s.sym}
+</div>
               <div style={{fontFamily:'monospace',fontSize:'.6rem',letterSpacing:'.16em',
                 textTransform:'uppercase',color:'var(--muted)',marginBottom:'.4rem'}}>{s.l}</div>
               <div style={{color:'#a09080',fontSize:'.84rem',wordBreak:'break-all'}}>{s.v}</div>

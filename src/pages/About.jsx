@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { SiLeetcode } from 'react-icons/si'
 gsap.registerPlugin(ScrollTrigger)
 
 const R = ({children,style,d=0,className=''})=>{
@@ -14,7 +15,7 @@ const R = ({children,style,d=0,className=''})=>{
 }
 
 const tl=[
-  {yr:'Aug 2023 – Present',role:'B.Tech CSE',place:'MM University, Mullana',note:'CGPA 9.22 · 90%',type:'edu'},
+  {yr:'Aug 2023 – Present',role:'B.Tech CSE',place:'MM University, Mullana',note:'CGPA 9.48',type:'edu'},
   {yr:'May 2026 – Present',role:'Data Science Intern',place:'Celebal Technologies · Remote',note:'ML pipelines · scikit-learn · Pandas · NumPy',type:'work'},
   {yr:'Jun – Aug 2025',role:'Web Dev Intern',place:'Nmold · Remote',note:'MERN · Agile Scrum · RESTful APIs',type:'work'},
 ]
@@ -87,7 +88,8 @@ export default function About() {
         </p>
         <div className="ah about-actions" style={{display:'flex',gap:'.8rem',flexWrap:'wrap',marginTop:'2.5rem'}}>
           {[{l:'GitHub',h:'https://github.com/GauriSinghal256',p:true},
-            {l:'LinkedIn ↗',h:'https://www.linkedin.com/in/gaurisinghal28',p:false}].map(x=>(
+            {l:'LinkedIn ↗',h:'https://www.linkedin.com/in/gaurisinghal28',p:false},
+            {l:'LeetCode',h:'https://leetcode.com/u/Gauri_098/',p:false,icon:<SiLeetcode /> }].map(x => (
             <a key={x.l} href={x.h} target="_blank" rel="noreferrer"
               style={{fontFamily:'monospace',fontSize:'.76rem',letterSpacing:'.1em',
                 padding:'10px 18px',borderRadius:'6px',textDecoration:'none',
@@ -95,7 +97,7 @@ export default function About() {
                 color:x.p?'var(--amber)':'var(--muted)',transition:'all .3s',display:'inline-flex',alignItems:'center',gap:'.55rem'}}
               onMouseEnter={e=>{e.currentTarget.style.background=x.p?'var(--amber)':'rgba(255,107,53,.08)';e.currentTarget.style.color=x.p?'#0E0C0A':'var(--cream)'}}
               onMouseLeave={e=>{e.currentTarget.style.background='transparent';e.currentTarget.style.color=x.p?'var(--amber)':'var(--muted)'}}>
-              {x.p && <GithubIcon />}
+              {x.icon || (x.p && <GithubIcon />)}
               {x.l}
               {x.p ? '' : ' ↗'}
             </a>
@@ -106,7 +108,7 @@ export default function About() {
       {/* BENTO STATS */}
       <R className="about-stats" style={{padding:'0 clamp(2rem,6vw,7rem) 4rem',maxWidth:'1280px',margin:'0 auto',
         display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'1rem'}}>
-        {[{n:'9.22',l:'CGPA',c:'var(--amber)'},{n:'90%',l:'Percentage',c:'var(--rose)'},
+        {[{n:'9.48',l:'CGPA',c:'var(--amber)'},{n:'300+',l:'LeetCode',c:'var(--rose)'},
           {n:'2',l:'Internships',c:'var(--amber)'},{n:'3+',l:'Live Projects',c:'var(--rose)'}].map(s=>(
           <div key={s.l} style={{background:'var(--card)',border:'1px solid var(--border)',
             borderRadius:'16px',padding:'1.8rem',textAlign:'center',transition:'all .3s'}}

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -20,7 +20,7 @@ const FEATURED = [
     stat: 'AWS Hosted', accent: 'var(--rose)'
   },
   {
-    id: '03', name: 'AnshulArchitects', sub: 'Live Production Website',
+    id: '03', name: 'Anshul Architects', sub: 'Live Production Website',
     desc: 'Professional architecture firm website live in production — fully responsive layout, dynamic service pages, and integrated Node.js backend.',
     tags: ['React.js', 'Tailwind CSS', 'Node.js'],
     live: 'https://www.anshularchitects.org/', github: null,

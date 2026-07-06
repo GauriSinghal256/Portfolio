@@ -36,7 +36,12 @@ export default function Home() {
     })
   }, { scope: heroRef })
 
-  const stats = [{ n: '9.22', l: 'CGPA' }, { n: '6+', l: 'Projects' }, { n: '2', l: 'Internships' }, { n: '3★', l: 'Hackathons' }]
+  const stats = [
+    { n: '9.48', l: 'CGPA' },
+    { n: '300+', l: 'LeetCode' },
+    { n: '6+', l: 'Projects' },
+    { n: '2', l: 'Internships' },
+  ]
 
   return (
     <div style={{ height: '100vh', position: 'relative', overflow: 'hidden' }}>
@@ -138,7 +143,7 @@ export default function Home() {
 
         {/* Stats strip */}
         <div className="hl" style={{ display: 'flex', gap: 'clamp(1.5rem,4vw,3.5rem)', flexWrap: 'wrap' }}>
-          {stats.map((s, i) => (
+          {stats.map(s => (
             <div key={s.l} style={{ borderLeft: '2px solid rgba(255,107,53,.3)', paddingLeft: '1.2rem' }}>
               <div style={{ fontFamily: 'font2', fontSize: 'clamp(1.4rem,2.5vw,2rem)', color: 'var(--amber)', lineHeight: 1 }}>{s.n}</div>
               <div style={{ fontFamily: 'monospace', fontSize: '.58rem', color: 'rgba(245,240,232,.35)', letterSpacing: '.14em', textTransform: 'uppercase', marginTop: '.25rem' }}>{s.l}</div>

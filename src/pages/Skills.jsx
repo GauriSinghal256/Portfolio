@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -36,22 +36,22 @@ const Bar=({name,level,col='var(--amber)'})=>{
 const groups=[
   {l:'Languages',c:'// the alphabets I think in',col:'var(--amber)',
    focus:'Writing reliable logic, scripting, and solving problems fast.',
-   s:[{n:'JavaScript',v:90},{n:'Python',v:88},{n:'Java',v:85},{n:'SQL',v:80}]},
+    s:[{n:'JavaScript',v:60},{n:'Python',v:70},{n:'Java',v:85},{n:'SQL',v:80}]},
   {l:'Frontend',c:'// what the user sees',col:'var(--rose)',
    focus:'Designing motion-rich interfaces and responsive, polished UI states.',
-   s:[{n:'React.js',v:90},{n:'Tailwind CSS',v:92},{n:'GSAP Animations',v:78},{n:'HTML / CSS',v:95}]},
+    s:[{n:'React.js',v:70},{n:'Tailwind CSS',v:92},{n:'GSAP Animations',v:50},{n:'HTML / CSS',v:95}]},
   {l:'Backend',c:'// where logic lives',col:'var(--amber)',
    focus:'Building APIs, auth flows, and server logic that feels solid under load.',
-   s:[{n:'Node.js / Express',v:85},{n:'Django',v:70},{n:'REST APIs',v:88},{n:'JWT Auth',v:82}]},
+    s:[{n:'Node.js / Express',v:70},{n:'Django',v:70},{n:'REST APIs',v:88},{n:'JWT Auth',v:82}]},
   {l:'Data & ML',c:'// making numbers make sense',col:'var(--rose)',
    focus:'Turning datasets into useful predictions, insights, and clean reports.',
-   s:[{n:'Pandas / NumPy',v:85},{n:'scikit-learn',v:80},{n:'Matplotlib / Seaborn',v:75},{n:'Feature Engineering',v:78}]},
+    s:[{n:'Pandas / NumPy',v:55},{n:'scikit-learn',v:58},{n:'Matplotlib / Seaborn',v:54},{n:'Feature Engineering',v:56}]},
   {l:'Databases & Cloud',c:'// where data lives',col:'var(--amber)',
    focus:'Managing storage, deployment, and cloud-backed app infrastructure.',
-   s:[{n:'MongoDB',v:83},{n:'MySQL',v:82},{n:'AWS (EC2,S3,IAM,VPC)',v:72}]},
+    s:[{n:'MongoDB',v:83},{n:'MySQL',v:82},{n:'AWS (EC2,S3,IAM,VPC)',v:40}]},
   {l:'CS Core',c:'// the stuff that actually matters',col:'var(--rose)',
    focus:'Keeping the fundamentals sharp for interviews, architecture, and debugging.',
-   s:[{n:'DSA',v:88},{n:'OOP',v:90},{n:'DBMS',v:82},{n:'OS / CN',v:77}]},
+    s:[{n:'DSA',v:88},{n:'OOP',v:90},{n:'DBMS',v:70},{n:'OS / CN',v:77}]},
 ]
 
 const tools=['Git / GitHub','Postman','VS Code','Vercel','Agile Scrum','Render','JWT','Linux Bash']
@@ -59,10 +59,6 @@ const tools=['Git / GitHub','Postman','VS Code','Vercel','Agile Scrum','Render',
 export default function Skills() {
   const hero=useRef(null)
   const [activeGroup, setActiveGroup] = useState(groups[1].l)
-  const [activeSkill, setActiveSkill] = useState(groups[1].s[0].n)
-
-  const currentGroup = useMemo(() => groups.find(g => g.l === activeGroup) ?? groups[0], [activeGroup])
-  const currentSkill = useMemo(() => currentGroup.s.find(s => s.n === activeSkill) ?? currentGroup.s[0], [currentGroup, activeSkill])
 
   useGSAP(()=>{
     gsap.from(hero.current.querySelectorAll('.skh'),{
@@ -114,7 +110,6 @@ export default function Skills() {
                 type="button"
                 onClick={() => {
                   setActiveGroup(g.l)
-                  setActiveSkill(g.s[0].n)
                 }}
                 style={{
                   fontFamily:'monospace',
@@ -162,7 +157,6 @@ export default function Skills() {
               cursor:'none'}}
             onClick={() => {
               setActiveGroup(g.l)
-              setActiveSkill(g.s[0].n)
             }}
             onMouseEnter={e=>e.currentTarget.style.borderColor='rgba(255,107,53,.28)'}
             onMouseLeave={e=>e.currentTarget.style.borderColor=g.l===activeGroup?'rgba(255,107,53,.42)':'var(--border)'}>
