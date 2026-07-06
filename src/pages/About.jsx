@@ -54,7 +54,7 @@ export default function About() {
             loop
             muted
             playsInline
-            src="/src/assets/project3.mp4"
+            src="https://res.cloudinary.com/dhu3cmxxw/video/upload/v1783320744/270448_medium_eathwn.mp4"
             style={{width:'100%',height:'100%',objectFit:'cover',filter:'saturate(1.08) contrast(1.08) brightness(.52)'}}
           />
           <div style={{position:'absolute',inset:0,background:'linear-gradient(120deg, rgba(14,12,10,.18) 0%, rgba(14,12,10,.08) 44%, rgba(14,12,10,.34) 100%)'}} />
@@ -70,7 +70,7 @@ export default function About() {
         top:'5%',left:'-180px',pointerEvents:'none',zIndex:1}}/>
 
       {/* HERO */}
-      <div ref={hero} className="about-hero" style={{position:'relative',zIndex:2,padding:'clamp(4rem,8vw,7rem) clamp(2rem,6vw,7rem)',maxWidth:'1100px',margin:'0 auto'}}>
+      <div ref={hero} className="about-hero" style={{position:'relative',zIndex:2,padding:'clamp(4rem,8vw,7rem) clamp(2rem,6vw,7rem)',maxWidth:'1280px',margin:'0 auto'}}>
         <div className="ah" style={{display:'flex',alignItems:'center',gap:'10px',marginBottom:'1.2rem'}}>
           <div style={{width:'28px',height:'1px',background:'var(--amber)',opacity:.6}}/>
           <span style={{fontFamily:'monospace',fontSize:'.68rem',letterSpacing:'.22em',color:'var(--amber)',opacity:.8}}>~/about</span>
@@ -104,7 +104,7 @@ export default function About() {
       </div>
 
       {/* BENTO STATS */}
-      <R className="about-stats" style={{padding:'0 clamp(2rem,6vw,7rem) 4rem',maxWidth:'1100px',margin:'0 auto',
+      <R className="about-stats" style={{padding:'0 clamp(2rem,6vw,7rem) 4rem',maxWidth:'1280px',margin:'0 auto',
         display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'1rem'}}>
         {[{n:'9.22',l:'CGPA',c:'var(--amber)'},{n:'90%',l:'Percentage',c:'var(--rose)'},
           {n:'2',l:'Internships',c:'var(--amber)'},{n:'3+',l:'Live Projects',c:'var(--rose)'}].map(s=>(
@@ -119,7 +119,7 @@ export default function About() {
       </R>
 
       {/* TIMELINE */}
-      <R className="about-timeline" style={{padding:'0 clamp(2rem,6vw,7rem) 5rem',maxWidth:'1100px',margin:'0 auto'}}>
+      <R className="about-timeline" style={{padding:'0 clamp(2rem,6vw,7rem) 5rem',maxWidth:'1280px',margin:'0 auto'}}>
         <div style={{fontFamily:'monospace',fontSize:'.68rem',letterSpacing:'.2em',
           color:'var(--amber)',opacity:.7,marginBottom:'2.5rem'}}>// education &amp; experience</div>
         {tl.map((t,i)=>(
@@ -153,7 +153,7 @@ export default function About() {
       </R>
 
       {/* AWARDS */}
-      <R className="about-awards" style={{padding:'0 clamp(2rem,6vw,7rem) 5rem',maxWidth:'1100px',margin:'0 auto'}}>
+      <R className="about-awards" style={{padding:'0 clamp(2rem,6vw,7rem) 5rem',maxWidth:'1280px',margin:'0 auto'}}>
         <div style={{fontFamily:'monospace',fontSize:'.68rem',letterSpacing:'.2em',
           color:'var(--amber)',opacity:.7,marginBottom:'2rem'}}>// achievements</div>
         <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))',gap:'1rem'}}>
@@ -172,7 +172,7 @@ export default function About() {
       </R>
 
       {/* CERTS */}
-      <R className="about-certs" style={{padding:'0 clamp(2rem,6vw,7rem) 8rem',maxWidth:'1100px',margin:'0 auto'}}>
+      <R className="about-certs" style={{padding:'0 clamp(2rem,6vw,7rem) 8rem',maxWidth:'1280px',margin:'0 auto'}}>
         <div style={{fontFamily:'monospace',fontSize:'.68rem',letterSpacing:'.2em',
           color:'var(--amber)',opacity:.7,marginBottom:'2rem'}}>// certifications</div>
         <div style={{display:'flex',flexDirection:'column',gap:'.6rem'}}>

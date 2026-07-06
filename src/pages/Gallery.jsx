@@ -4,24 +4,26 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
+const asset = file => new URL(`../assets/${file}`, import.meta.url).href
+
 // ── All your asset images ───────────────────────────────────────────────
 // Replace caption / category as you add your own winning pics.
 // Images are pulled from your existing uploaded assets.
 const PHOTOS = [
-  { src: '/src/assets/12.jpg',  caption: 'Hack-Tech — 3rd Position 🏆',     cat: 'Hackathon' },
-  { src: '/src/assets/13.jpg',  caption: 'GDG Hackureka — Finalist 🎯',      cat: 'Hackathon' },
-  { src: '/src/assets/15.webp', caption: 'HackVision Vault — Top 15 ⚡',     cat: 'Hackathon' },
-  { src: '/src/assets/9.jpeg',  caption: 'National Youth Festival — Coordinator 🎓', cat: 'Event' },
-  { src: '/src/assets/10.png',  caption: 'Internship at Celebal Technologies', cat: 'Work'    },
-  { src: '/src/assets/16.jpeg', caption: 'Web Dev Internship — Nmold',        cat: 'Work'    },
-  { src: '/src/assets/1.png',   caption: 'Campus Technical Fest',             cat: 'Event'   },
-  { src: '/src/assets/3.png',   caption: 'Project Exhibition',                cat: 'Event'   },
-  { src: '/src/assets/4.webp',  caption: 'Workshop & Seminar',                cat: 'Event'   },
-  { src: '/src/assets/5.png',   caption: 'Coding Competition',                cat: 'Event'   },
-  { src: '/src/assets/6.png',   caption: 'Team Collaboration',                cat: 'Event'   },
-  { src: '/src/assets/7.png',   caption: 'Award Ceremony',                    cat: 'Event'   },
-  { src: '/src/assets/8.png',   caption: 'Tech Conference',                   cat: 'Event'   },
-  { src: '/src/assets/11.png',  caption: 'Recognition & Excellence',          cat: 'Award'   },
+  { src: asset('12.jpg'),  caption: 'Hack-Tech — 3rd Position 🏆',     cat: 'Hackathon' },
+  { src: asset('13.jpg'),  caption: 'GDG Hackureka — Finalist 🎯',      cat: 'Hackathon' },
+  { src: asset('15.webp'), caption: 'HackVision Vault — Top 15 ⚡',     cat: 'Hackathon' },
+  { src: asset('9.jpeg'),  caption: 'National Youth Festival — Coordinator 🎓', cat: 'Event' },
+  { src: asset('10.png'),  caption: 'Internship at Celebal Technologies', cat: 'Work'    },
+  { src: asset('16.jpeg'), caption: 'Web Dev Internship — Nmold',        cat: 'Work'    },
+  { src: asset('1.png'),   caption: 'Campus Technical Fest',             cat: 'Event'   },
+  { src: asset('3.png'),   caption: 'Project Exhibition',                cat: 'Event'   },
+  { src: asset('4.webp'),  caption: 'Workshop & Seminar',                cat: 'Event'   },
+  { src: asset('5.png'),   caption: 'Coding Competition',                cat: 'Event'   },
+  { src: asset('6.png'),   caption: 'Team Collaboration',                cat: 'Event'   },
+  { src: asset('7.png'),   caption: 'Award Ceremony',                    cat: 'Event'   },
+  { src: asset('8.png'),   caption: 'Tech Conference',                   cat: 'Event'   },
+  { src: asset('11.png'),  caption: 'Recognition & Excellence',          cat: 'Award'   },
 ]
 
 const CATS = ['All', 'Hackathon', 'Award', 'Work', 'Event']
@@ -212,7 +214,7 @@ export default function Gallery() {
       </div>
 
       {/* Hero */}
-      <div ref={hero} style={{ padding: 'clamp(4rem,8vw,6rem) clamp(2rem,6vw,7rem)', maxWidth: '1200px', margin: '0 auto' }}>
+      <div ref={hero} style={{ padding: 'clamp(4rem,8vw,6rem) clamp(2rem,6vw,7rem)', maxWidth: '1320px', margin: '0 auto' }}>
         <div style={{ display: 'inline-block', padding: '1.1rem 1.2rem 1.2rem', borderRadius: '24px', background: 'rgba(14,12,10,.68)', border: '1px solid rgba(255,107,53,.08)', boxShadow: '0 0 40px rgba(14,12,10,.25)' }}>
           <div className="gh" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.2rem' }}>
             <div style={{ width: '28px', height: '1px', background: 'var(--amber)', opacity: .6 }} />
@@ -229,15 +231,14 @@ export default function Gallery() {
       </div>
 
       {/* Filter tabs */}
-      <div style={{ padding: '0 clamp(2rem,6vw,7rem) 2.5rem', maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ padding: '0 clamp(2rem,6vw,7rem) 2.5rem', maxWidth: '1320px', margin: '0 auto' }}>
         <div style={{ display: 'flex', gap: '.6rem', flexWrap: 'wrap' }}>
           {CATS.map(c => (
             <button key={c} onClick={() => setActiveCat(c)} style={{
               fontFamily: 'monospace', fontSize: '.7rem', letterSpacing: '.14em', textTransform: 'uppercase',
-              padding: '8px 18px', borderRadius: '8px', border: 'none', cursor: 'none',
+              padding: '8px 18px', borderRadius: '8px', border: `1px solid ${activeCat === c ? 'transparent' : 'rgba(255,107,53,.15)'}`, cursor: 'none',
               background: activeCat === c ? 'linear-gradient(135deg,var(--amber),var(--rose))' : 'rgba(255,107,53,.07)',
               color: activeCat === c ? '#fff' : 'var(--muted)',
-              border: `1px solid ${activeCat === c ? 'transparent' : 'rgba(255,107,53,.15)'}`,
               transition: 'all .3s', fontWeight: activeCat === c ? 700 : 400,
               boxShadow: activeCat === c ? 'var(--glow-a)' : 'none'
             }}>
@@ -249,7 +250,7 @@ export default function Gallery() {
 
       {/* Masonry grid — 3 columns */}
       <div style={{
-        padding: '0 clamp(2rem,6vw,7rem) 6rem', maxWidth: '1200px', margin: '0 auto',
+        padding: '0 clamp(2rem,6vw,7rem) 6rem', maxWidth: '1320px', margin: '0 auto',
         display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1.1rem',
         alignItems: 'start'
       }}>
@@ -266,7 +267,7 @@ export default function Gallery() {
       <div style={{
         margin: '0 clamp(2rem,6vw,7rem) 5rem', padding: '1.2rem 1.8rem',
         border: '1px dashed rgba(255,107,53,.2)', borderRadius: '12px',
-        maxWidth: '1200px', display: 'flex', alignItems: 'center', gap: '1rem'
+        maxWidth: '1320px', display: 'flex', alignItems: 'center', gap: '1rem'
       }}>
         <span style={{ fontSize: '1.2rem' }}>📸</span>
         <span style={{ fontFamily: 'monospace', fontSize: '.72rem', color: 'var(--muted)', letterSpacing: '.1em' }}>

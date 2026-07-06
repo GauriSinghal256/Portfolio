@@ -3,21 +3,23 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import React, { useRef } from 'react'
 
+const asset = file => new URL(`../assets/${file}`, import.meta.url).href
+
 const imageArray = [
-  "src/assets/15.webp",
-  "src/assets/16.jpeg",
-  "src/assets/3.png",
-  "src/assets/1.png",
-  "src/assets/4.webp",
-  "src/assets/5.png",
-  "src/assets/6.png",
-  "src/assets/7.png",
-  "src/assets/8.png",
-  "src/assets/9.jpeg",
-  "src/assets/10.png",
-  "src/assets/11.png",
-  "src/assets/12.jpg",
-  "src/assets/13.jpg",
+  asset('15.webp'),
+  asset('16.jpeg'),
+  asset('3.png'),
+  asset('1.png'),
+  asset('4.webp'),
+  asset('5.png'),
+  asset('6.png'),
+  asset('7.png'),
+  asset('8.png'),
+  asset('9.jpeg'),
+  asset('10.png'),
+  asset('11.png'),
+  asset('12.jpg'),
+  asset('13.jpg'),
 ];
 
 const Agence = () => {

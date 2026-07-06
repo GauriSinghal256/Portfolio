@@ -5,7 +5,7 @@ import { gsap } from 'gsap'
 const socials=[
   {l:'Email',v:'singhalg818@gmail.com',h:'mailto:singhalg818@gmail.com',sym:'✉',col:'var(--amber)'},
   {l:'LinkedIn',v:'gaurisinghal28',h:'https://www.linkedin.com/in/gaurisinghal28',sym:'in',col:'var(--rose)'},
-  {l:'GitHub',v:'GauriSinghal256',h:'https://github.com/GauriSinghal256',sym:'⌥',col:'var(--amber)'},
+  {l:'GitHub',v:'GauriSinghal256',h:'https://github.com/GauriSinghal256',col:'var(--amber)'},
   {l:'Phone',v:'+91 7017255646',h:'tel:+917017255646',sym:'◎',col:'var(--rose)'},
 ]
 
@@ -32,7 +32,7 @@ export default function Contact() {
             loop
             muted
             playsInline
-            src="/src/assets/project2.mp4"
+            src="https://res.cloudinary.com/dhu3cmxxw/video/upload/v1783321759/6455-192501937_medium_rgxvfb.mp4"
             style={{width:'100%',height:'100%',objectFit:'cover',filter:'saturate(1.02) contrast(1.06) brightness(.52)'}}
           />
           <div style={{position:'absolute',inset:0,background:'linear-gradient(135deg, rgba(14,12,10,.72) 0%, rgba(14,12,10,.42) 40%, rgba(14,12,10,.78) 100%)'}} />
@@ -49,7 +49,7 @@ export default function Contact() {
         background:'radial-gradient(circle,rgba(232,64,90,.06) 0%,transparent 70%)',
         bottom:'5%',right:'-200px',pointerEvents:'none'}}/>
 
-      <div ref={hero} style={{padding:'clamp(3.5rem,7vw,5.25rem) clamp(2rem,6vw,7rem) clamp(3rem,6vw,4.5rem)',maxWidth:'900px',margin:'0 auto',position:'relative',zIndex:2}}>
+      <div ref={hero} style={{padding:'clamp(3.5rem,7vw,5.25rem) clamp(2rem,6vw,7rem) clamp(3rem,6vw,4.5rem)',maxWidth:'1040px',margin:'0 auto',position:'relative',zIndex:2}}>
 
         <div className="coh" style={{display:'flex',alignItems:'center',gap:'10px',marginBottom:'1.2rem'}}>
           <div style={{width:'28px',height:'1px',background:'var(--amber)',opacity:.6}}/>

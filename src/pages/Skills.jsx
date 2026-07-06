@@ -83,14 +83,14 @@ export default function Skills() {
             loop
             muted
             playsInline
-            src="/src/assets/project4.mp4"
+            src="https://res.cloudinary.com/dhu3cmxxw/video/upload/v1783321558/18386-291585298_medium_qsbitg.mp4"
             style={{width:'100%',height:'100%',objectFit:'cover',filter:'saturate(.9) contrast(1.05) brightness(.44)'}}
           />
           <div style={{position:'absolute',inset:0,background:'linear-gradient(180deg, rgba(14,12,10,.14) 0%, rgba(14,12,10,.72) 100%)'}} />
         </div>
       </div>
 
-      <div ref={hero} style={{padding:'clamp(4rem,8vw,6rem) clamp(2rem,6vw,7rem)',maxWidth:'1200px',margin:'0 auto'}}>
+      <div ref={hero} style={{padding:'clamp(4rem,8vw,6rem) clamp(2rem,6vw,7rem)',maxWidth:'1320px',margin:'0 auto'}}>
         <div className="skh" style={{display:'flex',alignItems:'center',gap:'10px',marginBottom:'1.2rem'}}>
           <div style={{width:'28px',height:'1px',background:'var(--amber)',opacity:.6}}/>
           <span style={{fontFamily:'monospace',fontSize:'.68rem',letterSpacing:'.22em',color:'var(--amber)',opacity:.8}}>~/skills</span>
@@ -104,7 +104,7 @@ export default function Skills() {
         </p>
       </div>
 
-      <div style={{padding:'0 clamp(2rem,6vw,7rem) 1.4rem',maxWidth:'1200px',margin:'0 auto'}}>
+      <div style={{padding:'0 clamp(2rem,6vw,7rem) 1.4rem',maxWidth:'1320px',margin:'0 auto'}}>
         <div style={{display:'flex',flexWrap:'wrap',gap:'.7rem'}}>
           {groups.map(g => {
             const isActive = g.l === activeGroup
@@ -150,7 +150,7 @@ export default function Skills() {
         </div>
       </div>
 
-      <div style={{padding:'0 clamp(2rem,6vw,7rem)',maxWidth:'1200px',margin:'0 auto',
+      <div style={{padding:'0 clamp(2rem,6vw,7rem)',maxWidth:'1320px',margin:'0 auto',
         display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))',gap:'1.3rem'}}>
         {groups.map((g,gi)=>(
           <R key={g.l} d={gi*.06}
@@ -180,7 +180,7 @@ export default function Skills() {
         ))}
       </div>
 
-      <R style={{padding:'clamp(3rem,5vw,5rem) clamp(2rem,6vw,7rem) 8rem',maxWidth:'1200px',margin:'0 auto'}}>
+      <R style={{padding:'clamp(3rem,5vw,5rem) clamp(2rem,6vw,7rem) 8rem',maxWidth:'1320px',margin:'0 auto'}}>
         <div style={{fontFamily:'monospace',fontSize:'.68rem',letterSpacing:'.2em',
           color:'var(--amber)',opacity:.7,marginBottom:'1.5rem'}}>// tools & practices</div>
         <div style={{display:'flex',flexWrap:'wrap',gap:'.6rem'}}>

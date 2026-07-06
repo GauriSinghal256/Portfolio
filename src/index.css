@@ -36,6 +36,12 @@ body {
   cursor:none;
 }
 
+@media (min-width: 1200px) {
+  body {
+    font-size: 17px;
+  }
+}
+
 /* ── Custom Cursor ──────────────────────── */
 #cursor-dot {
   width:10px; height:10px;

@@ -211,7 +211,7 @@ export default function Projects() {
       </div>
 
       {/* Hero */}
-      <div ref={hero} style={{ padding: 'clamp(4rem,8vw,6rem) clamp(2rem,6vw,7rem)', maxWidth: '1200px', margin: '0 auto' }}>
+      <div ref={hero} style={{ padding: 'clamp(4rem,8vw,6rem) clamp(2rem,6vw,7rem)', maxWidth: '1320px', margin: '0 auto' }}>
         <div className="prh" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.2rem' }}>
           <div style={{ width: '28px', height: '1px', background: 'var(--amber)', opacity: .6 }} />
           <span style={{ fontFamily: 'monospace', fontSize: '.68rem', letterSpacing: '.22em', color: 'var(--amber)', opacity: .8 }}>~/projects</span>
@@ -225,12 +225,12 @@ export default function Projects() {
       </div>
 
       {/* Featured 3 */}
-      <div style={{ padding: '0 clamp(2rem,6vw,7rem) 5rem', maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(340px,1fr))', gap: '1.5rem' }}>
+      <div style={{ padding: '0 clamp(2rem,6vw,7rem) 5rem', maxWidth: '1320px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(340px,1fr))', gap: '1.5rem' }}>
         {FEATURED.map((p, i) => <FeaturedCard key={p.id} p={p} i={i} />)}
       </div>
 
       {/* More repos section */}
-      <div style={{ padding: '0 clamp(2rem,6vw,7rem) 8rem', maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 3 }}>
+      <div style={{ padding: '0 clamp(2rem,6vw,7rem) 8rem', maxWidth: '1320px', margin: '0 auto', position: 'relative', zIndex: 3 }}>
         <div style={{
           display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '1.4rem',
           padding: '1.1rem 1.2rem', borderRadius: '18px',

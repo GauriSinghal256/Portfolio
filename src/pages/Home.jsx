@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
+import Video from '../components/home/Video'
 
 const ROLES = ['Full-Stack Developer', 'Data Science Intern', 'ML Engineer', 'Problem Solver']
 const NAME  = 'GAURI SINGHAL'
@@ -42,11 +43,7 @@ export default function Home() {
 
       {/* ── Full-screen video background ── */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-        <video
-          autoPlay loop muted playsInline
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          src="/src/assets/project.mp4"
-        />
+        <Video />
         {/* layered dark gradient so text pops */}
         <div style={{
           position: 'absolute', inset: 0,
