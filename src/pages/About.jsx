@@ -1,8 +1,13 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SiLeetcode } from 'react-icons/si'
+import certImg1 from '../assets/Certificates/delloite_c.jpeg'
+import certImg2 from '../assets/Certificates/delloite_d.png'
+import certImg3 from '../assets/Certificates/aws.png'
+import certImg4 from '../assets/Certificates/applied_genai.jpeg'
+import certImg5 from '../assets/Certificates/agile.jpeg'
 gsap.registerPlugin(ScrollTrigger)
 
 const R = ({children,style,d=0,className=''})=>{
@@ -20,11 +25,11 @@ const tl=[
   {yr:'Jun – Aug 2025',role:'Web Dev Intern',place:'Nmold · Remote',note:'MERN · Agile Scrum · RESTful APIs',type:'work'},
 ]
 const certs=[
-  'Deloitte Australia — Cyber Job Simulation',
-  'Deloitte Australia — Data Analytics (Forage 2025)',
-  'AWS Solutions Architecture — Forage (July 2025)',
-  'Infosys Springboard — Frontend & Generative AI',
-  'Agile Scrum in Practice — 2025',
+  { title:'Deloitte Australia — Cyber Job Simulation', image:certImg1 },
+  { title:'Deloitte Australia — Data Analytics (Forage 2025)', image:certImg2 },
+  { title:'AWS Solutions Architecture — Forage (July 2025)', image:certImg3 },
+  { title:'Infosys Springboard — Frontend & Generative AI', image:certImg4 },
+  { title:'Agile Scrum in Practice — 2025', image:certImg5 },
 ]
 const awards=[
   {t:'3rd Position',s:'Hack-Tech',e:'🏆'},
@@ -41,10 +46,38 @@ const GithubIcon = () => (
 
 export default function About() {
   const hero=useRef(null)
+  const [preview, setPreview] = useState(null)
+  const [previewPos, setPreviewPos] = useState({ x: 0, y: 0 })
+  const targetPos = useRef({ x: 0, y: 0 })
+  const currentPos = useRef({ x: 0, y: 0 })
+  const previewFrame = useRef(0)
   useGSAP(()=>{
     gsap.from(hero.current.querySelectorAll('.ah'),{
       opacity:0,y:50,stagger:.12,duration:1,ease:'power3.out'})
   },{scope:hero})
+
+  useEffect(() => {
+    if (!preview) return undefined
+
+    const baseX = typeof window !== 'undefined' ? window.innerWidth * 0.73 : 0
+    const baseY = typeof window !== 'undefined' ? window.innerHeight * 0.5 : 0
+    targetPos.current = { x: baseX, y: baseY }
+    currentPos.current = { x: baseX, y: baseY }
+    setPreviewPos({ x: baseX, y: baseY })
+
+    const tick = () => {
+      currentPos.current = {
+        x: currentPos.current.x + (targetPos.current.x - currentPos.current.x) * 0.12,
+        y: currentPos.current.y + (targetPos.current.y - currentPos.current.y) * 0.12,
+      }
+      setPreviewPos(currentPos.current)
+      previewFrame.current = window.requestAnimationFrame(tick)
+    }
+
+    previewFrame.current = window.requestAnimationFrame(tick)
+
+    return () => window.cancelAnimationFrame(previewFrame.current)
+  }, [preview])
 
   return (
     <div className="about-page" style={{minHeight:'100vh',paddingTop:'60px',background:'var(--bg)',position:'relative',zIndex:2,overflow:'hidden'}}>
@@ -179,17 +212,73 @@ export default function About() {
           color:'var(--amber)',opacity:.7,marginBottom:'2rem'}}>// certifications</div>
         <div style={{display:'flex',flexDirection:'column',gap:'.6rem'}}>
           {certs.map((c,i)=>(
-            <div key={i} style={{display:'flex',alignItems:'center',gap:'1.2rem',
+            <div
+              key={i}
+              style={{display:'flex',alignItems:'center',gap:'1.2rem',
               padding:'1rem 1.5rem',border:'1px solid var(--border)',borderRadius:'10px',
-              background:'var(--bg2)',transition:'all .3s'}}
-              onMouseEnter={e=>{e.currentTarget.style.borderColor='rgba(232,64,90,.3)';e.currentTarget.style.background='var(--card)'}}
-              onMouseLeave={e=>{e.currentTarget.style.borderColor='var(--border)';e.currentTarget.style.background='var(--bg2)'}}>
+              background:'var(--bg2)',transition:'all .3s',cursor:'pointer'}}
+              onMouseEnter={e=>{
+                e.currentTarget.style.borderColor='rgba(232,64,90,.3)'
+                e.currentTarget.style.background='var(--card)'
+                const baseX = window.innerWidth * 0.73
+                const baseY = window.innerHeight * 0.5
+                targetPos.current = {
+                  x: baseX + (e.clientX - window.innerWidth / 2) * 0.08,
+                  y: baseY + (e.clientY - window.innerHeight / 2) * 0.06,
+                }
+                currentPos.current = { ...targetPos.current }
+                setPreviewPos(targetPos.current)
+                setPreview({image:c.image,title:c.title})
+              }}
+              onMouseMove={e=>{
+                const baseX = window.innerWidth * 0.73
+                const baseY = window.innerHeight * 0.5
+                targetPos.current = {
+                  x: baseX + (e.clientX - window.innerWidth / 2) * 0.08,
+                  y: baseY + (e.clientY - window.innerHeight / 2) * 0.06,
+                }
+              }}
+              onMouseLeave={e=>{
+                e.currentTarget.style.borderColor='var(--border)'
+                e.currentTarget.style.background='var(--bg2)'
+                setPreview(null)
+              }}>
               <span style={{fontFamily:'monospace',fontSize:'.62rem',color:'var(--rose)',minWidth:'22px'}}>{String(i+1).padStart(2,'0')}</span>
-              <span style={{color:'#b0a898',fontSize:'.9rem'}}>{c}</span>
+              <span style={{color:'#b0a898',fontSize:'.9rem'}}>{c.title}</span>
             </div>
           ))}
         </div>
       </R>
+
+      {preview && (
+        <div
+          style={{
+            position:'fixed',
+            left:0,
+            top:0,
+            transform:`translate3d(${previewPos.x}px, ${previewPos.y}px, 0) translate(-50%, -50%)`,
+            width:'clamp(220px, 22vw, 320px)',
+            padding:'12px',
+            borderRadius:'20px',
+            background:'rgba(14,12,10,.82)',
+            border:'1px solid rgba(255,107,53,.22)',
+            boxShadow:'0 18px 55px rgba(0,0,0,.38), 0 0 50px rgba(255,107,53,.12)',
+            backdropFilter:'blur(10px)',
+            pointerEvents:'none',
+            zIndex:20,
+            transition:'transform .08s linear',
+          }}
+        >
+          <img
+            src={preview.image}
+            alt={preview.title}
+            style={{width:'100%',height:'clamp(180px, 20vw, 240px)',objectFit:'cover',borderRadius:'14px',display:'block'}}
+          />
+          <div style={{marginTop:'10px',fontFamily:'monospace',fontSize:'.62rem',letterSpacing:'.12em',color:'var(--amber)',textTransform:'uppercase'}}>
+            Certificate preview
+          </div>
+        </div>
+      )}
     </div>
   )
 }
